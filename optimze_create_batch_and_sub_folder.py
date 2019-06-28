@@ -3,9 +3,10 @@ import sys
 import glob
 from shutil import move
 
-batch_folder = "/home/parathan/Downloads/scripts/pdf"
+batch_folder = os.getcwd()+"/pdf"
+uncompressed_pdf = os.getcwd()
 
-for root, dirs, files in os.walk("/home/parathan/Downloads/scripts"):
+for root, dirs, files in os.walk(uncompressed_pdf):
 	for file in files:
 		if file.endswith(".pdf"):
 			print (file)

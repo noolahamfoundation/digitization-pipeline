@@ -6,7 +6,7 @@ import glob
 from shutil import move
 
 # Change the uncompressed_pdf path to proper file path where unoptimized PDF exists
-uncompressed_pdf = "/home/noolaham/Desktop/unoptimizedPDF/"
+uncompressed_pdf = "/home/noolaham/Desktop/unoptimizedPDF"
 
 # Configure the batch_folder path to save the optimized PDF files finally
 batch_folder = "/home/noolaham/Documents"

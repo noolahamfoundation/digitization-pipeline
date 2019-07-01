@@ -1,24 +1,21 @@
 # Optimize PDF files and make a batch folder and create subfolders for every optimized files
 
-# Workflow 
-# 1. Create a new folder and copy this script inside it
-# 2. Create a new folder called "pdf" inside the newly created folder
-# 3. Place all the unoptimized file in the new folder
-# 4. Run this script using "python optimize_create_subfolders.py" in the terminal
-
 import os
 import sys
 import glob
 from shutil import move
 
-batch_folder = os.getcwd()+"/pdf"
-uncompressed_pdf = os.getcwd()
+# Change the uncompressed_pdf path to proper file path where unoptimized PDF exists
+uncompressed_pdf = "/home/noolaham/Desktop/unoptimizedPDF/"
+
+# Configure the batch_folder path to save the optimized PDF files finally
+batch_folder = "/home/noolaham/Documents"
 
 for root, dirs, files in os.walk(uncompressed_pdf):
 	for file in files:
 		if file.endswith(".pdf"):
 			print (file)
-			cmdCompress = 'gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dColorImageResolution=150 -sOutputFile='+batch_folder+'/'+file+ ' '+ file
+			cmdCompress = 'gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dColorImageResolution=150 -sOutputFile='+batch_folder+ '/'+ file + ' ' + file
 
 			os.system(cmdCompress)
 	

@@ -144,7 +144,7 @@ def translate(string, wdict):
 site = wiki.Wiki("http://www.noolaham.org/wiki/api.php")
 
 # login - required for read-restricted wikis
-if not site.login("Sangeetha","Sgymh&%M5@", verify=True):
+if not site.login("username","password", verify=True):
     print("Login failed")
 
 #Get Token (needed to edit wiki)

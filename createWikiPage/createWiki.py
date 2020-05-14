@@ -125,9 +125,14 @@ def prepareWikiPage(i_row):
     if pgAuthor != "-":
 	pageText = pageText + "\n\n" + "[[பகுப்பு:" + pgAuthor + "]]"; 
 
-    if pgContentType != "பத்திரிகை" or pgContentType != "இதழ்":
-    	pageText = pageText + "\n\n" + "[[பகுப்பு:" + pgPublisher + "]]";
+    
+    if pgPublisher != "-" and pgContentType != "பத்திரிகை":
+	pageText = pageText + "\n\n" + "[[பகுப்பு:" + pgPublisher + "]]";
+    		
+	
 
+    
+   
     #Add other categories
     catsStr = getCatsText(pgCats)
     pageText = pageText + catsStr
@@ -153,12 +158,12 @@ token = getNoolahamToken(site, api)
 #Read through each entry and update wiki
 batchfile = open('createdata.csv', 'rt')
 try:
-      reader = csv.reader(batchfile)
+     reader = csv.reader(batchfile)
      for row in reader:
 	pgTitle = row[2]
         pageText = prepareWikiPage(row)
-        print(pageText)
-       	updateWikiPage(site, api, token, pgTitle, pageText)
+	print(pageText)
+	updateWikiPage(site, api, token, pgTitle, pageText)
 
 finally:
      batchfile.close()
